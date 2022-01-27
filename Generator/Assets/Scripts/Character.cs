@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using GeneratorScript;
 
 namespace Generator.GeneratorScript
 {
@@ -12,11 +11,11 @@ namespace Generator.GeneratorScript
 		protected int XP;
 		protected BaseStats _baseStats;
 		protected CharacterType _characterType;
-		protected ItemData _defensiveItem;
-		protected ItemData _offensiveItem;
+		protected Item _defensiveItem;
+		protected Item _offensiveItem;
 		protected State _characterState;
 
-		public Character(string _characterName)
+		public Character() 
 		{
 			throw new NotImplementedException();
 		}

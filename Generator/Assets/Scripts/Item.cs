@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using GeneratorScript;
+using UnityEngine;
 
 namespace Generator.GeneratorScript
 {
@@ -14,12 +14,12 @@ namespace Generator.GeneratorScript
 		protected ItemType _itemType;
 		protected int _damageAmount;
 
-		public void DisplayStats(ItemData _item)
+		public void DisplayStats(Item _item)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Item(string _itemName, Sprite _itemSprite)
+		public Item()
 		{
 			throw new NotImplementedException();
 		}

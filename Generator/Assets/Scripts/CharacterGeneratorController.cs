@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using GeneratorScript;
 
 namespace Generator.GeneratorScript
 {
 	public class CharacterGeneratorController
 	{
 		public static CharacterGeneratorController _instanceCGC;
-		protected List<CharacterData> _generatedCharacters;
-		protected List<CharacterData> _availableCharacters;
+		protected List<Character> _generatedCharacters;
+		protected List<Character> _availableCharacters;
 
 		public static CharacterGeneratorController GetInstance()
 		{
