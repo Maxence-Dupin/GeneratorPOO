@@ -12,7 +12,9 @@ namespace Generator.GeneratorScript
 
 		public BaseStats(int newLife, int newPower, int newDefense)
 		{
-			throw new NotImplementedException();
+			this._baseLife = newLife;
+			this._basePower = newPower;
+			this._baseDefense = newDefense;
 		}
 	}
 }

@@ -6,9 +6,9 @@ namespace Generator.GeneratorScript
 {
 	public class Ennemy : Character
 	{
-		public Ennemy()
+		public Ennemy(string name) : base(name)
 		{
-			throw new NotImplementedException();
+			_characterType = CharacterType.ENNEMY;
 		}
 	}
 }
