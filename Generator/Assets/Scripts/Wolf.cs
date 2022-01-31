@@ -8,8 +8,20 @@ namespace Generator.GeneratorScript
 	{
 		public Wolf(string name, int level) : base(name, level)
 		{
-			_baseStats = new BaseStats(60 + _level * 10, 30 + _level * 5, 40 + level * 5);
+			_baseStats = new BaseStats(60 + _level * 10, 30 + _level * 5, 40 + _level * 5);
+
+			_attackName = "GRAOUHGRAOUH";
+			_attackDescription = "Graouh Graouh Miaou Grrrraouh";
 		}
+		
+		public Wolf(string name) : base(name)
+		{
+			_baseStats = new BaseStats(60 + _level * 10, 30 + _level * 5, 40 + _level * 5);
+
+			_attackName = "GRAOUHGRAOUH";
+			_attackDescription = "Graouh Graouh Miaou Grrrraouh";
+		}
+
 		public override void SpecialAttack()
 		{
 			throw new NotImplementedException();

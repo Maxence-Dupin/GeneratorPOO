@@ -34,12 +34,6 @@ namespace Generator.GeneratorScript
 			_generatedCharacters = new List<Character>();
 			_displayedFrames = new List<GameObject>();
 			_availableCharacters = new List<Character>();
-			_availableCharacters.Add(new Paladin("Michelle", 64));
-			_availableCharacters.Add(new Mage("Jacques", 25));
-			_availableCharacters.Add(new Rogue("Douglas", -10));
-			_availableCharacters.Add(new Orc("Ougahougah", 47));
-			_availableCharacters.Add(new Wolf("Graou", 12));
-			_availableCharacters.Add(new Dragon("Frrrrrrrrrrr", 10000));
 		}
 		
         public static CharacterGeneratorController GetInstance
@@ -49,6 +43,17 @@ namespace Generator.GeneratorScript
 
 		public void GenerateCharacter()
 		{
+			_generatedCharacters.Clear();
+			_availableCharacters.Clear();
+			InventoryController.GetInstance.DeleteFrames();
+
+			_availableCharacters.Add(new Paladin("Michelle"));
+			_availableCharacters.Add(new Mage("Jacques"));
+			_availableCharacters.Add(new Rogue("Douglas", -10));
+			_availableCharacters.Add(new Orc("Ougahougah", 47));
+			_availableCharacters.Add(new Wolf("Graou", 12));
+			_availableCharacters.Add(new Dragon("Frrrrrrrrrrr", 10000));
+
 			List<int> indexTable = new List<int>();
 			int indexToPick = UnityEngine.Random.Range(0, _availableCharacters.Count);
 			

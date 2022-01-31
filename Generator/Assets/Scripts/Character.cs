@@ -66,6 +66,28 @@ namespace Generator.GeneratorScript
 			_characterState = State.ALIVE;
 			_XP = 1;
 		}
+		
+		public Character(string name) 
+		{
+			_name = name;
+			GetLevel = UnityEngine.Random.Range(1, 100);
+			_characterState = State.ALIVE;
+			_XP = 1;
+		}
+
+		protected string _attackName;
+		public string AttackName
+        {
+			get { return _attackName; }
+			private set { _attackName = value; }
+        }
+
+		protected string _attackDescription;
+		public string AttackDescription
+        {
+			get { return _attackDescription; }
+			private set { _attackDescription = value; }
+        }
 
 		private void Start()
         {

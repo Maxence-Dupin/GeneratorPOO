@@ -10,5 +10,10 @@ namespace Generator.GeneratorScript
 		{
 			_characterType = CharacterType.ENNEMY;
 		}
+		
+		public Ennemy(string name) : base(name)
+		{
+			_characterType = CharacterType.ENNEMY;
+		}
 	}
 }

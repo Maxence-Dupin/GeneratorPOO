@@ -12,7 +12,8 @@ namespace Generator.GeneratorScript
         private List<GameObject> _frames;
         private List<Character> _generatedCharacters;
 
-        [SerializeField] private GameObject myPrefab;
+        [SerializeField] private GameObject Prefab_CharacterFrame
+            ;
         [SerializeField] private GameObject myCanvas;
         [SerializeField] private Transform spawnPoint;
 
@@ -37,19 +38,15 @@ namespace Generator.GeneratorScript
             //get generated characters from CharacterGeneratorController instance
             _generatedCharacters = CharacterGeneratorController.GetInstance.GeneratedCharacters;
 
-            if( _frames.Count != 0)
-            {
-                DeleteCharacters();
-            }
-
             int compteur = 0;
             foreach(Character character in _generatedCharacters)
             {
-                Debug.Log("display one frame: " + character.GetName);
+                //frame prefab instantiation
                 spawnPoint.localPosition = new Vector3(spawnPoint.localPosition.x + 600, spawnPoint.localPosition.y, spawnPoint.localPosition.z);
-                GameObject oneFrame = Instantiate(myPrefab, spawnPoint.position, spawnPoint.rotation, myCanvas.transform);
+                GameObject oneFrame = Instantiate(Prefab_CharacterFrame, spawnPoint.position, spawnPoint.rotation, myCanvas.transform);
                 oneFrame.transform.localScale = new Vector3(1, 1, 1);
 
+                //assign character to the Frame 
                 oneFrame.GetComponent<Frame>().FrameCharacter = character;
 
                 _frames.Add(oneFrame);
@@ -68,7 +65,7 @@ namespace Generator.GeneratorScript
             spawnPoint.localPosition = new Vector3(spawnPoint.localPosition.x - 600 * compteur, spawnPoint.localPosition.y, spawnPoint.localPosition.z);
         }
 
-        public void DeleteCharacters()
+        public void DeleteFrames()
         {
             //destroy prefabs frame
             foreach (GameObject frame in _frames)
@@ -76,20 +73,6 @@ namespace Generator.GeneratorScript
                 Destroy(frame);
             }
             _frames.Clear();
-
-            //reset Characters
-            foreach (Character character in _generatedCharacters)
-            {
-                if (character.GetDefensiveItem != null)
-                {
-                    character.GetDefensiveItem = null;
-                }
-                if (character.GetOffensiveItem != null)
-                {
-                    character.GetOffensiveItem = null;
-                }
-            }
-
         }
 
         // Update is called once per frame

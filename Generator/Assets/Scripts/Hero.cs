@@ -10,5 +10,10 @@ namespace Generator.GeneratorScript
 		{
 			_characterType = CharacterType.HERO;
 		}
+		
+		public Hero(string name) : base(name)
+		{
+			_characterType = CharacterType.HERO;
+		}
 	}
 }

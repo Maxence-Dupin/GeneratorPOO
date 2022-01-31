@@ -29,12 +29,26 @@ namespace Generator.GeneratorScript
 		}
 
 		protected Sprite _itemSprite;
+
 		protected ItemType _itemType;
+		public ItemType GetItemType
+        {
+			get { return _itemType; }
+			private set { _itemType = value; }
+        }
+
 		protected DamageType _damageType;
 
 		public void DisplayStats(Item _item)
 		{
 			throw new NotImplementedException();
+		}
+
+		public Item(string name, DamageType damageType)
+		{
+			_name = name;
+			_level = UnityEngine.Random.Range(1, 100);
+			_damageType = damageType;
 		}
 
 		public Item(string name, int level, DamageType damageType)

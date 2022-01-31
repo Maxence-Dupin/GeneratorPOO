@@ -22,9 +22,9 @@ namespace Generator.GeneratorScript
 			_availableItems.Add(new OffensiveItem("Anneau rouge", 3, DamageType.MAGIC_DAMAGE));
 			_availableItems.Add(new OffensiveItem("Épée kicoupe", 12, DamageType.MELEE_DAMAGE));
 			_availableItems.Add(new OffensiveItem("Gatling", 50, DamageType.PROJECTILE_DAMAGE));
-			_availableItems.Add(new DefensiveItem("Manteau de la nuit", 20, DamageType.MAGIC_DAMAGE));
-			_availableItems.Add(new DefensiveItem("Plastron gargantuesque", 32, DamageType.MELEE_DAMAGE));
-			_availableItems.Add(new DefensiveItem("Bouclier 3*3 px", 9, DamageType.PROJECTILE_DAMAGE));
+			_availableItems.Add(new DefensiveItem("Manteau de la nuit", DamageType.MAGIC_DAMAGE));
+			_availableItems.Add(new DefensiveItem("Plastron gargantuesque", DamageType.MELEE_DAMAGE));
+			_availableItems.Add(new DefensiveItem("Bouclier 3*3 px", DamageType.PROJECTILE_DAMAGE));
 		}
 
 		public static ItemGeneratorController GetInstance
@@ -62,7 +62,6 @@ namespace Generator.GeneratorScript
             }
 
 			_generatedItem = _items[UnityEngine.Random.Range(0, _items.Count)];
-			Debug.Log(_generatedItem.GetName);
 			return _generatedItem;
 		}
 	}
