@@ -10,5 +10,11 @@ namespace Generator.GeneratorScript
 		{
 			throw new NotImplementedException();
 		}
+
+		public OffensiveItem(string name, int level, DamageType damageType) : base(name, level, damageType)
+        {
+			_itemType = ItemType.OFFENSIVE;
+			GetBaseStats = new BaseStats(0, 10 + _level * 5, 0);
+		}
 	}
 }

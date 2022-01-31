@@ -6,7 +6,7 @@ namespace Generator.GeneratorScript
 {
 	public class Hero : Character
 	{
-		public Hero(string name) : base(name)
+		public Hero(string name, int level) : base(name, level)
 		{
 			_characterType = CharacterType.HERO;
 		}

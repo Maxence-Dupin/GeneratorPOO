@@ -27,12 +27,12 @@ namespace Generator.GeneratorScript
 			_generatedCharacters = new List<Character>();
 			_displayedFrames = new List<GameObject>();
 			_availableCharacters = new List<Character>();
-			_availableCharacters.Add(new Paladin("Michelle"));
-			_availableCharacters.Add(new Mage("Jacques"));
-			_availableCharacters.Add(new Rogue("Douglas"));
-			_availableCharacters.Add(new Orc("Ougahougah"));
-			_availableCharacters.Add(new Wolf("Graou"));
-			_availableCharacters.Add(new Dragon("Frrrrrrrrrrr"));
+			_availableCharacters.Add(new Paladin("Michelle", 64));
+			_availableCharacters.Add(new Mage("Jacques", 25));
+			_availableCharacters.Add(new Rogue("Douglas", -10));
+			_availableCharacters.Add(new Orc("Ougahougah", 47));
+			_availableCharacters.Add(new Wolf("Graou", 12));
+			_availableCharacters.Add(new Dragon("Frrrrrrrrrrr", 10000));
 		}
 		
         public static CharacterGeneratorController GetInstance
@@ -88,16 +88,10 @@ namespace Generator.GeneratorScript
 				GameObject oneFrame = Instantiate(myPrefab, spawnPoint.position, spawnPoint.rotation, myCanvas.transform);
 				oneFrame.transform.localScale = new Vector3(1, 1, 1);
 
-				//Display character's name on frame
-				oneFrame.transform.Find("NameText").GetComponent<Text>().text = charac.GetName;
+				charac.GetFrame = oneFrame;
+				oneFrame.GetComponent<Frame>().frameCharac = charac;
 
-				//Display character's level on frame
-				oneFrame.transform.Find("LevelText").GetComponent<Text>().text = charac.GetLevel.ToString();
-
-				//Display character's stats on frame
-				oneFrame.transform.Find("LifeText").GetComponent<Text>().text = charac.GetBaseStats._baseLife.ToString();
-				oneFrame.transform.Find("PowerText").GetComponent<Text>().text = charac.GetBaseStats._basePower.ToString();
-				oneFrame.transform.Find("DefenseText").GetComponent<Text>().text = charac.GetBaseStats._baseDefense.ToString();
+				charac.DisplayFrame();
 
 				_displayedFrames.Add(oneFrame);
 				
@@ -111,6 +105,18 @@ namespace Generator.GeneratorScript
 			foreach (GameObject frame in _displayedFrames)
             {
 				Destroy(frame);
+			}
+			foreach (Character charac in _generatedCharacters)
+			{
+				if(charac.GetDefensiveItem != null)
+                {
+					charac.GetDefensiveItem = null;
+                }
+				if(charac.GetOffensiveItem != null)
+
+				{
+					charac.GetOffensiveItem = null;
+				}
 			}
 			_displayedFrames.Clear();
         }

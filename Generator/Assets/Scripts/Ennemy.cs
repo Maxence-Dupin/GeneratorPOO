@@ -6,7 +6,7 @@ namespace Generator.GeneratorScript
 {
 	public class Ennemy : Character
 	{
-		public Ennemy(string name) : base(name)
+		public Ennemy(string name, int level) : base(name, level)
 		{
 			_characterType = CharacterType.ENNEMY;
 		}

@@ -6,9 +6,9 @@ namespace Generator.GeneratorScript
 {
 	public class Dragon : Ennemy
 	{
-		public Dragon(string name) : base(name)
+		public Dragon(string name, int level) : base(name, level)
 		{
-			_baseStats = new BaseStats(1000, 80, 70);
+			_baseStats = new BaseStats(1000 + _level * 100, 80 + _level * 110, 70 + _level * 110);
 		}
 		public override void SpecialAttack()
 		{
