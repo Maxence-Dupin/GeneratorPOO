@@ -11,6 +11,13 @@ namespace Generator.GeneratorScript
 	{
 		public static CharacterGeneratorController _instanceCGC = null;
 		protected List<Character> _generatedCharacters;
+
+		public List<Character> GeneratedCharacters
+		{
+            get { return _generatedCharacters; }
+			private set { _generatedCharacters = value; }
+		}
+
 		protected List<GameObject> _displayedFrames;
 		[SerializeField] public List<Character> _availableCharacters;
 		[SerializeField] private GameObject myPrefab;
@@ -57,68 +64,9 @@ namespace Generator.GeneratorScript
 				indexTable.Add(indexToPick);
 			}
 
-			DisplayCharacters();
-			
-			
-			/*foreach (Character a in _generatedCharacters)
-            {
-				if(a is Ennemy)
-                {
-					Debug.Log("je suis un ennemi, je m'appelle " + a.GetName);
-				}
-				else
-                {
-					Debug.Log("je suis un héros, je m'appelle " + a.GetName);
-				}
-				Debug.Log("life : " + a.GetBaseStats._baseLife + " power : " + a.GetBaseStats._basePower + " defense : " + a.GetBaseStats._baseDefense);
-			}*/
+			//display characters in inventory;
+			InventoryController.GetInstance.DisplayFrames();
 		}
 
-		public void DisplayCharacters()
-		{
-			int compteur = 0;
-			if(_displayedFrames.Count != 0)
-            {
-				DeleteCharacters();
-            }
-
-			foreach (Character charac in _generatedCharacters)
-            {
-				spawnPoint.localPosition = new Vector3(spawnPoint.localPosition.x + 600, spawnPoint.localPosition.y, spawnPoint.localPosition.z);
-				GameObject oneFrame = Instantiate(myPrefab, spawnPoint.position, spawnPoint.rotation, myCanvas.transform);
-				oneFrame.transform.localScale = new Vector3(1, 1, 1);
-
-				charac.GetFrame = oneFrame;
-				oneFrame.GetComponent<Frame>().frameCharac = charac;
-
-				charac.DisplayFrame();
-
-				_displayedFrames.Add(oneFrame);
-				
-				compteur++;
-			}
-			spawnPoint.localPosition = new Vector3(spawnPoint.localPosition.x - 600*compteur, spawnPoint.localPosition.y, spawnPoint.localPosition.z);
-		}
-
-		public void DeleteCharacters()
-        {
-			foreach (GameObject frame in _displayedFrames)
-            {
-				Destroy(frame);
-			}
-			foreach (Character charac in _generatedCharacters)
-			{
-				if(charac.GetDefensiveItem != null)
-                {
-					charac.GetDefensiveItem = null;
-                }
-				if(charac.GetOffensiveItem != null)
-
-				{
-					charac.GetOffensiveItem = null;
-				}
-			}
-			_displayedFrames.Clear();
-        }
 	}
 }
